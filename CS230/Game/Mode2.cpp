@@ -27,7 +27,8 @@ Mode2::Mode2() {
     ship = nullptr;
 }
 
-void Mode2::Load() {
+void Mode2::Load() 
+{
 #ifdef _DEBUG
     AddGSComponent(new CS230::ShowCollision());
 #endif
@@ -49,7 +50,8 @@ void Mode2::Load() {
     
 }
 
-void Mode2::Update(double dt) {
+void Mode2::Update(double dt) 
+{
     UpdateGSComponents(dt);
     GetGSComponent<CS230::GameObjectManager>()->UpdateAll(dt);
     if (IsKeyPressed(KEY_ESCAPE)) {

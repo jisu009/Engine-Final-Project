@@ -17,7 +17,8 @@ void Menu::Load()
 
     menulists.push_back({ "Side Scroller", {window_center.x, window_center.y + item_spacing} });
     menulists.push_back({ "Space Shooter", {window_center.x, window_center.y} });
-    menulists.push_back({ "Exit",          {window_center.x, window_center.y - item_spacing} });
+    menulists.push_back({ "See(ker)pearl", {window_center.x, window_center.y - item_spacing} });
+    menulists.push_back({ "Exit",          {window_center.x, window_center.y - 2*item_spacing} });
 
     for (auto& item : menulists) {
         item.unselected_texture = Engine::GetFont(simple_font_id).PrintToTexture(item.text, off_color);
@@ -55,6 +56,9 @@ void Menu::Update([[maybe_unused]] double dt)
             Engine::GetGameStateManager().SetNextGameState(static_cast<int>(States::Mode2));
         }
         else if (index == 2) {
+            Engine::GetGameStateManager().SetNextGameState(static_cast<int>(States::Mode3));
+        }
+        else if (index == 3) {
             Engine::GetGameStateManager().ClearNextGameState();
         }
     }

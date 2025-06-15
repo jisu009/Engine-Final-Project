@@ -12,6 +12,7 @@ enum class GameObjectTypes {
     Laser,
     Count,
     Particle,
+    Seeker
 };
 
 

@@ -49,9 +49,11 @@
     <ClCompile Include="Game\Meteor.cpp" />
     <ClCompile Include="Game\Mode1.cpp" />
     <ClCompile Include="Game\Mode2.cpp" />
+    <ClCompile Include="Game\Mode3.cpp" />
     <ClCompile Include="Game\Portal.cpp" />
     <ClCompile Include="Game\Robot.cpp" />
     <ClCompile Include="Game\ScreenWrap.cpp" />
+    <ClCompile Include="Game\Seeker.cpp" />
     <ClCompile Include="Game\Ship.cpp" />
     <ClCompile Include="Game\Splash.cpp" />
     <ClCompile Include="main.cpp" />
@@ -94,10 +96,12 @@
     <ClInclude Include="Game\Meteor.h" />
     <ClInclude Include="Game\Mode1.h" />
     <ClInclude Include="Game\Mode2.h" />
+    <ClInclude Include="Game\Mode3.h" />
     <ClInclude Include="Game\Particles.h" />
     <ClInclude Include="Game\Portal.h" />
     <ClInclude Include="Game\Robot.h" />
     <ClInclude Include="Game\ScreenWrap.h" />
+    <ClInclude Include="Game\Seeker.h" />
     <ClInclude Include="Game\Ship.h" />
     <ClInclude Include="Game\Splash.h" />
     <ClInclude Include="Game\States.h" />

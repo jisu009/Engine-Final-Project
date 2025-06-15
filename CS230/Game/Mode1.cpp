@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "../Game/Cat.h"
 #include "../Game/Asteroid.h"

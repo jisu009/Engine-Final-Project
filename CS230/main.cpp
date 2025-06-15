@@ -13,8 +13,10 @@ Created:    March 16, 2025
 #include"Game/Menu.h"
 #include "Game/Mode1.h"
 #include "Game/Mode2.h"
+#include "Game/Mode3.h"
 #include "Game/Splash.h"
 #include "Engine/vec2.h"
+#include "Game/States.h"
 
 int main() {
     try {
@@ -31,7 +33,8 @@ int main() {
         engine.GetGameStateManager().AddGameState(mode1);
         Mode2 mode2;
         engine.GetGameStateManager().AddGameState(mode2);
-
+        Mode3 mode3;
+        engine.GetGameStateManager().AddGameState(mode3);
         while (engine.HasGameEnded() == false) {
             engine.Update();
         }
