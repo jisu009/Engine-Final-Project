@@ -9,10 +9,12 @@ enum class GameObjectTypes {
     Ship,
     Floor,
     Portal,
-    Laser,
-    Count,
+    Laser,    
     Particle,
-    Seeker
+    Seeker,
+    Seagrass,
+    Count,
+
 };
 
 

@@ -31,7 +31,7 @@ public:
         return "Mode3";
     }
 
-    static constexpr double gravity = 800;
+    static constexpr double gravity = 180;
     static constexpr double floor = 200;
 private:
     CS230::Texture texture;

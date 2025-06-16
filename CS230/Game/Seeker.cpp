@@ -12,20 +12,20 @@ Created:    June 15, 2025
 #include "../Engine/Camera.h"
 #include "Gravity.h"
 
-Seeker::Seeker(Math::vec2 start_position/*, CS230::GameObject* starting_floor_ptr*/ )
-	: GameObject(start_position)
+Seeker::Seeker(Math::vec2 start_position/*, CS230::GameObject* starting_floor_ptr*/)
+    : GameObject(start_position)
 {
-	SetVelocity({ 0,0 });
-	AddGOComponent(new CS230::Sprite("Assets/Seeker.spt", this));
+    SetVelocity({ 0,0 });
+    AddGOComponent(new CS230::Sprite("Assets/Seeker.spt", this));
 
-    //SetScale({ 1.5, 1.5 });
-	current_state = &state_idle;
-	current_state->Enter(this);
+    SetScale({ 3.0, 3.0 });
+    current_state = &state_idle;
+    current_state->Enter(this);
 }
 
 void Seeker::Update(double dt) {
-	GameObject::Update(dt);
-    SetScale({ 1.5, 1.5 });
+    GameObject::Update(dt);
+    SetScale({ 3.0, 3.0 });
     update_x_velocity(dt);
 }
 
@@ -95,11 +95,20 @@ void Seeker::State_Jumping::Enter(GameObject* object) {
     seeker->SetVelocity(v);
 }
 void Seeker::State_Jumping::Update(GameObject* object, double dt) {
-     Seeker* seeker = static_cast<Seeker*>(object);   
-     Math::vec2 v = seeker->GetVelocity();
-     v.y += Mode3::gravity;
+    Seeker* seeker = static_cast<Seeker*>(object);
+    Math::vec2 v = seeker->GetVelocity();
+    Math::vec2 pos = seeker->GetPosition();
+    v.y += Mode3::gravity;
     seeker->SetVelocity({ seeker->GetVelocity().x, seeker->GetVelocity().y - Engine::GetGameStateManager().GetGSComponent<Gravity>()->GetValue() * dt });
     seeker->update_x_velocity(dt);
+    
+    // fly
+    //if (Engine::GetInput().KeyDown(CS230::Input::Keys::Up) && pos.y < 600) {
+    //    v.y = Seeker::jump_velocity;
+    //}
+    //v.y -= Engine::GetGameStateManager().GetGSComponent<Gravity>()->GetValue() * dt;
+    //seeker->SetVelocity(v);
+    //seeker->update_x_velocity(dt);
 }
 void Seeker::State_Jumping::CheckExit(GameObject* object) {
     Seeker* seeker = static_cast<Seeker*>(object);
@@ -145,7 +154,7 @@ void Seeker::State_Falling::Update(GameObject* object, double dt) {
 void Seeker::State_Falling::CheckExit(GameObject* object)
 {
     Seeker* seeker = static_cast<Seeker*>(object);
-    if (seeker->GetPosition().y <= Mode3::floor) {  
+    if (seeker->GetPosition().y <= Mode3::floor) {
         seeker->SetPosition({ seeker->GetPosition().x, Mode3::floor });
         Math::vec2 v = seeker->GetVelocity();
         v.y = 0;
@@ -156,9 +165,8 @@ void Seeker::State_Falling::CheckExit(GameObject* object)
         else
             seeker->change_state(&seeker->state_running);
     }
-        
-}
 
+}
 
 void Seeker::Draw(Math::TransformationMatrix camer_matrix) {
     CS230::GameObject::Draw(camer_matrix);
